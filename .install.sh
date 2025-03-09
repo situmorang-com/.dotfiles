@@ -17,8 +17,12 @@ echo "Installing Brew..."
 brew analytics off
 
 # create Brewfile
-# brew bundle dump describe
+# brew bundle dump --describe
+# brew bundle dump --file=- | grep '^mas'
 # brew bundle
+
+brew install mas # Mac App Store command-line interface
+mas install 1528890965 #TextSniper OCR Copy & Paste
 
 # Brew Taps
 echo "Installing Brew Formulae..."
@@ -28,7 +32,7 @@ brew tap koekeishiya/formulae
 # Brew Formulae
 brew install node
 brew install Alfred # Application launcher and productivity software
-brew install mas # Mac App Store command-line interface
+
 brew install jq # Lightweight and flexible command-line JSON processor
 brew install gh # GitHub command-line tool
 brew install ripgrep #Search tool like grep and The Silver Searcher
@@ -364,6 +368,9 @@ defaults write com.apple.dock minimize-to-application -bool true
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
 
+# Enable grouping windows by application in Mission Control
+defaults write com.apple.dock expose-group-apps -bool true
+
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
@@ -506,3 +513,17 @@ ensure_pip_installed
 install_pip_packages
 
 echo -e "\n[*] all pip packages installed."
+
+
+###############################################################################
+# SETTINGS                                                                    #
+###############################################################################
+# Setting up aliases from .dotfiles
+echo 'source ~/.dotfiles/.aliases' >> ~/.zshrc
+
+# EZA - move config folder to ~/.config/eza so that theme.yaml can be read
+echo 'export EZA_CONFIG_DIR="$HOME/.config/eza"' >> ~/.zshrc
+
+# BTOP
+# to setup BTOP Theme just press ESC and choose options
+#
