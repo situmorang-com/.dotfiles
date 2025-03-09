@@ -6,13 +6,10 @@ tap "libsql/sqld"
 tap "nikitabobko/tap"
 tap "nikolaeu/numi"
 tap "tursodatabase/tap"
-tap "yqrashawn/goku"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Cross-platform make
 brew "cmake"
 # Utility to configure multi-display resolutions and arrangements
@@ -53,6 +50,8 @@ brew "node"
 brew "nowplaying-cli"
 # General-purpose scripting language
 brew "php"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -67,14 +66,12 @@ brew "python@3.10"
 brew "ripgrep"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Yet Another Dotfiles Manager
-brew "yadm"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
@@ -90,12 +87,12 @@ brew "felixkratz/formulae/sketchybar"
 # Smart calculator
 brew "nikolaeu/numi/numi-cli"
 brew "tursodatabase/tap/turso"
-# karabiner configurator
-brew "yqrashawn/goku/goku"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
-# Browser for SQLite databases
-cask "db-browser-for-sqlite"
+# Application launcher and productivity software
+cask "alfred"
+# Tool to customise input devices and automate computer systems
+cask "bettertouchtool"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 cask "font-hack-nerd-font"
@@ -103,14 +100,29 @@ cask "font-sf-mono"
 cask "font-sf-pro"
 cask "font-sketchybar-app-font"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Free and open-source media player
+cask "iina"
+# Menu bar calendar
+cask "itsycal"
+# Keyboard customiser
+cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Open-source code editor
+cask "visual-studio-code"
 # Rust-based terminal
 cask "warp"
 # Gecko based web browser
 cask "zen-browser"
+mas "TextSniper", id: 1528890965
 vscode "bierner.markdown-mermaid"
 vscode "esbenp.prettier-vscode"
 vscode "github.copilot"
@@ -123,7 +135,6 @@ vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "openai.openai-chatgpt-adhoc"
 vscode "ritwickdey.liveserver"
 vscode "svelte.svelte-vscode"
 vscode "yoavbls.pretty-ts-errors"
