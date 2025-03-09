@@ -20,7 +20,7 @@ alias vdot="nvim ~/dotfiles/.install.sh"
 if hash eza 2>/dev/null; then
     alias ls='eza -a --color=always --group-directories-first --icons'
     alias lt='eza --color=always --group-directories-first --icons -T -a'
-alias ll="eza --color=always --long --no-user --no-permissions -a --icons --git --sort=modified --reverse --group-directories-first --show-symlinks -m --octal-permissions --git-repos"
+alias ll="eza --color=always --long --header --no-user --no-permissions -a --icons --git --sort=modified --reverse --group-directories-first --show-symlinks -m --octal-permissions --git-repos"
 fi
 
 
