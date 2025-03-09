@@ -5,7 +5,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias cd="cd ~" # `cd` is probably faster to type though
+alias .="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
@@ -15,6 +15,14 @@ alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 alias vdot="nvim ~/dotfiles/.install.sh"
+
+# exa! https://the.exa.website/
+if hash eza 2>/dev/null; then
+    alias ls='eza -a --color=always --group-directories-first --icons'
+    alias lt='eza --color=always --group-directories-first --icons -T -a'
+alias ll="eza --color=always --long --no-user --no-permissions -a --icons --git --sort=modified --reverse --group-directories-first --show-symlinks -m --octal-permissions --git-repos"
+fi
+
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -27,7 +35,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# Reload the shell (i.e. invoke as a login shell)
+# Reload the shell (i.e. invoke as a login sh:well)
 # alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
@@ -107,3 +115,26 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+
+
+# -------------------------------------
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+alias ff="fzf --preview '~/.config/fzf/bin/fzf-preview.sh {}'"
