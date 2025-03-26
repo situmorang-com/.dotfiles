@@ -47,6 +47,24 @@ writeToProfile('x', [
     l: toPaste('😂'), // joy
     t: toPaste('😊🙏') // thanks
   }),
+  
+    //layer('caps_lock', 'caps_lock pressed')
+    //.configKey((v) => v.toIfAlone('escape'), true)
+    //.modifiers('??')
+    //.manipulators({
+    //  ";": toKey('delete_or_backspace'),
+    //  a: toKey('left_shift'),
+    //  s: toKey('left_control'),
+    //  d: toKey('left_option'),
+    //  f: toKey('left_command'),
+    //  g: toKey('tab'),
+    //  h: toKey('tab', 'left_shift'),
+    //  i: toKey('up_arrow'),
+    //  j: toKey('left_arrow'),
+    //  k: toKey('down_arrow'),
+    //  l: toKey('right_arrow'),
+    //}),
+
 
   duoLayer('j', 'k', 'launch-app').manipulators({
     c: toApp('Calendar'),
@@ -64,8 +82,8 @@ writeToProfile('x', [
 //    map('caps_lock').toHyper().toIfAlone('caps_lock'),
 //  ]),
 
-  rule('Safari: Press Cmd+Shift+1 to run moveSafariTabToFirst.scpt', ifApp('Safari')).manipulators([
-    map('1', '⇧', '⌘').to$('osascript /Users/edmundsitumorang/.dotfiles/Scripts/moveSafariTabToFirst.scpt')    
+  rule('Safari: Press Dlouble Tap Cmd + 1 to run moveSafariTabToFirst.scpt', ifApp('Safari')).manipulators([
+    mapDoubleTap('1', '⌘').to$('osascript /Users/edmundsitumorang/.dotfiles/Scripts/moveSafariTabToFirst.scpt')    
   ]),
 
   rule('Safari: Map ⌘+,/. → back/fwd | ⌘+m → left tab', ifApp('Safari')).manipulators([
@@ -89,11 +107,27 @@ writeToProfile('x', [
     map('⎋', 'fn').to('q', 'l⌘⌃'),
   ]),
 
+  rule('OSX: fn + N → System Network Pane').manipulators([
+    map('n', 'fn').to$('open "/System/Library/PreferencePanes/Network.prefPane"')
+  ]),
+
   rule('OSX: alt + esc → Aerospace enable toggle').manipulators([
     map('⎋', '⌥').to$('/opt/homebrew/bin/aerospace enable toggle'),
   ]),
 
-  //rule('OSX: DoubleTaps').manipulators([
+  rule('OSX: Ctrl + ` → Karabiner restart').manipulators([
+    map('`', '⌃').to$('launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server'),
+  ]),
+
+  rule('OSX: Alt + ` → Sketchybar Reload').manipulators([
+    map('`', '⌥').to$('/opt/homebrew/bin/sketchybar --reload'),
+  ]),
+
+  rule('OSX: CMD + F3 to activate screen mirroring').manipulators([
+    map('f3', '⌘').to({"shell_command": "osascript ~/.config/karabiner/cmd_f3_screen_mirroring.scpt"})
+  ]),
+
+  rule('OSX: DoubleTaps').manipulators([
   //  mapDoubleTap('l⇧', '', 'any').to('⇪')
       //.singleTap(toKey('⎋'))
       //.toIfHeldDown("l⇧")
@@ -102,16 +136,19 @@ writeToProfile('x', [
       //  "basic.to_if_alone_timeout_milliseconds": 250,
       //  "basic.to_if_held_down_threshold_milliseconds": 250
       //})
-  //]),
-  rule('OSX: DoubleTap COMMANDS').manipulators([
+    //mapDoubleTap('caps_lock').to('caps_lock').singleTap(null)
+    mapDoubleTap('4','l⌘').to('4', 'l⌘⌃⇧'),
+    //mapDoubleTap('left_shift', 'any').to('caps_lock')
+  ]),
+//  rule('OSX: DoubleTap COMMANDS').manipulators([
     // mapDoubleTap('↑').to('↖︎'),
     // mapDoubleTap('↓').to('end'),
     // mapDoubleTap('⇪').to('⎋')
     // mapDoubleTap('r⌥').to$('/opt/homebrew/bin/sketchybar --reload'),
     //mapDoubleTap('l⇧').to('⇪').singleTap(toKey('l⇧'))
-    mapDoubleTap("right_shift").to("caps_lock").toIfHeldDown("right_shift")
+    //mapDoubleTap("right_shift").to("caps_lock").toIfHeldDown("right_shift")
 
-  ]),
+//  ]),
 
   rule('Hyper: ⌃⇧⌥⌘ + h/j/k/l | i/o → ←↓↑→ | pgup/pgdn').manipulators([
     map('h', 'Hyper').to('←'),
